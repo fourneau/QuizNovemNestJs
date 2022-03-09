@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
 
 @Controller('home')
 export class HomeController {
@@ -8,7 +8,10 @@ getHome(){
     return 'Liste';
 }
 @Post()
-addHome(){
+addHome(
+    @Body() newHome
+){
+    console.log(newHome)
     console.log('ajouter')
     return 'Ajout Home';
 }

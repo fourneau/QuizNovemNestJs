@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
 
 @Controller('about')
 export class AboutController {
@@ -8,7 +8,10 @@ getAbout(){
     return 'Liste';
 }
 @Post()
-addAbout(){
+addAbout(
+    @Body() newAbout
+){
+    console.log(newAbout)
     console.log('ajouter')
     return 'Ajout About';
 }

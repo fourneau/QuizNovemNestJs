@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
 
 @Controller('register')
 export class RegisterController {
@@ -8,7 +8,10 @@ getRegister(){
     return 'Liste';
 }
 @Post()
-addRegister(){
+addRegister(
+    @Body() newRegister
+){
+    console.log(newRegister)
     console.log('ajouter')
     return 'Ajout Register';
 }

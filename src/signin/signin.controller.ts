@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
 
 @Controller('signin')
 export class SigninController {
@@ -8,7 +8,10 @@ getSignin(){
     return 'Liste';
 }
 @Post()
-addSignin(){
+addSignin(
+    @Body() newSignin
+){
+    console.log(newSignin)
     console.log('ajouter')
     return 'Ajout Signin';
 }
