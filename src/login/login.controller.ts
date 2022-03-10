@@ -9,9 +9,11 @@ getLogin(){
 }
 @Post()
 addLogin(
-    @Body() newLogin
+    @Body('id') id: string,
+    @Body('username') name: string,
+    @Body('password') password:string,
 ){
-    console.log(newLogin)
+    console.log(id, name, password)
     console.log('ajouter')
     return 'Ajout Login';
 }
