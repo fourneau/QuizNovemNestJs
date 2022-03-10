@@ -1,21 +1,29 @@
 import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Login } from './entities/login.entity';
 
 @Controller('login')
 export class LoginController {
+    constructor() {
+        this.logins = []
+    }
+    logins: Login[];
     @Get()
 getLogin(){
-    console.log('récupérer')
-    return 'Liste';
+    
+    return this.logins;
 }
 @Post()
 addLogin(
-    @Body('id') id: string,
-    @Body('username') name: string,
-    @Body('password') password:string,
+    @Body('id') newLogin: Login
 ){
-    console.log(id, name, password)
-    console.log('ajouter')
-    return 'Ajout Login';
+    if (this.logins.length) {
+        newLogin.id = this.logins[this.logins.length - 1].id + 1;
+    } else {
+        newLogin.id = 1;
+    }
+    this.logins.push(newLogin);
+    return newLogin;
+   
 }
 @Delete()
 deleteLogin(){
